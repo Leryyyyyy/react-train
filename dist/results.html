@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://unpkg.com/react@16/umd/react.development.js" ></script>
+	<script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" ></script>
+    <!-- babel是解析JSX必备的库 -->
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+    <link rel="stylesheet" href="battle.html">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            
+        }
+        button:disabled{
+            background:#f2f2f2!important;
+            color:#c7c7c7!important;;
+        }
+        .alignitems{
+          align-items: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="containterbattle"></div>
+  
+<script type="text/babel">
+  
+  class Nav extends React.Component {
+    constructor(props) {
+      super(props);
+      this.state = {
+        icon: 'fa fa-circle-o fa-3x', color: '#e8e8e8', fontcolor: '#000000', e: '',onClick:'Battle'
+      };
+    }
+      genBian = (xxx) => {
+      this.setState({ onClick: xxx });
+    }
+      canShu = (ee) => {
+        this.setState({ e: ee });
+      }
+  
+      changeIcon = () => {
+        if (this.state.icon === 'fa fa-circle-o fa-3x') {
+          this.setState({
+            icon: 'fa fa-circle fa-3x',
+            color: '#595959',
+            fontcolor: '#f5f5f5',
+          });
+        } else {
+          this.setState({
+            icon: 'fa fa-circle-o fa-3x',
+            color: '#e8e8e8',
+            fontcolor: '#000000',
+  
+          });
+        }
+      }
+  
+      render() {
+        return (
+          <div style={{ background: this.state.color, color: this.state.fontcolor }}>
+            <div style={{
+              width: '90%', backgroundColor: '', margin: '0 auto', display: 'flex', justifyContent: 'space-between', paddingTop: '50px',
+            }}
+            >
+              <ul style={{ display: 'flex', listStyle: 'none', fontWeight: 'bold' }}>
+                <li style={{
+                  flex: '1', color: 'red', marginRight: '10px', cursor: 'pointer',}}> 
+                  <a   style={{fontWeight:'bold', flex:1,fontSize:'18px',border:'none',cursor:'pointer',textDecoration:'none',color:this.state.fontcolor}} href="index.html" >Popoular</a>
+                </li>
+                <li style={{ flex: '1', cursor: 'pointer' }}>
+                <a   className={ 'active'} style={{fontWeight:'bold', flex:1,fontSize:'18px',border:'none',cursor:'pointer',textDecoration:'none'}} href="battle.html">Battle</a>
+                </li>
+              </ul>
+              <span className={this.state.icon} onClick={this.changeIcon} />
+  
+            </div>
+           <Content/>
+          </div>
+        );
+      }
+  }
+  class Content extends React.Component {
+    constructor(props) {
+    super(props);
+    this.state = {  player1: {name: props.player1,score: 0},
+                    player2: {name: props.player2,score: 0},};
+  }
+
+  async componentDidMount() {
+    const { player1, player2 } = this.props;
+    this.init("player1", player1);
+    this.init("player2", player2);
+  }
+
+  init = async (type, name) => {
+    const res = await axios.get(`https://api.github.com/users/${name}`);
+    this.setState({
+      [type]: { ...res.data, score: res.data.public_repos, loading: false }
+    });
+  };
+
+  render() {
+    const { onReset } = this.props;
+    const { player1, player2 } = this.state;
+    if (player1.loading || player2.loading) {
+      return <Loading />;
+    }
+    if (player1.score > player2.score) {
+      player1.role = "Winner";
+      player2.role = "Loser";
+    } else {
+      player1.role = "Loser";
+      player2.role = "Winner";
+    }
+
+    return (
+      <div>
+        <div style={styles.container}>
+          <ResultCard player={player1} type={player1.role} />
+          <ResultCard player={player2} type={player2.role} />
+        </div>
+        <div style={styles.action}>
+          <button onClick={onReset}>RESET</button>
+        </div>
+      </div>
+    );
+  }
+}
+
+    }
+
+    results1=()=>{
+       for(i=0;repos[i]==this.state.props;i++){ this.setState({b:i})}
+    }
+    render() {
+      console.log(this.state.repos)
+      
+        return (
+            <div>
+               
+               {this.state.repos}
+            </div>
+        );
+    }
+
+
+
+
+
+  }
+        
+  
+      class App extends React.Component {
+        render() {
+          return (
+            <div>
+              <Nav />
+             
+              
+            </div>
+          );
+        }
+      }ReactDOM.render(
+        <App />,
+        document.getElementById('containterbattle'),
+        
+      );
+
+</script><script type="text/javascript" src="bundle.js"></script></body>
+
+</html>
