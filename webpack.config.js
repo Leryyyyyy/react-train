@@ -19,10 +19,10 @@ module.exports = function(env , argv){
       filename:'index.html',
       template: "./public/index.html"
     }),
-    new HtmlWebpackPlugin({
-      filename:'battle.html',
-      template: "./public/battle.html"
-    })
+    // new HtmlWebpackPlugin({
+    //   filename:'battle.html',
+    //   template: "./public/battle.html"
+    // })
   ],
   module: {
     rules: [
@@ -35,7 +35,8 @@ module.exports = function(env , argv){
 
   },
 
-};}
+};
+}
 
 // resolve:{
 

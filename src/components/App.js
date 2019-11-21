@@ -1,13 +1,15 @@
 import React from 'react';
+// import Router from './Router';
 import Nav from './Nav';
-import{ hot } from 'react-hot-loader/root';
+import Nav2 from './Nav2';
 class App extends React.Component {
-    render() {
-      return (
-        <div>
-          <Nav />
-        </div>
-      );
-    }
+  render() {
+    return (
+      <div>
+        <Nav/>
+        <Nav2/>
+      </div>
+    );
   }
-  export default hot(App);
+}
+export default (App);

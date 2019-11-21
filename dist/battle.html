@@ -124,8 +124,8 @@
               
               )
           }}
-    class Players extends React.Component{
-
+    
+          class Players extends React.Component{
         constructor(props) {
             super(props);
             this.state = { input1:true ,input2:true,input3:'',input4:'',display1:'flex',display2:'none',display3:'flex',display4:'none',display5:'none'};
@@ -209,20 +209,19 @@
                            
                     </div>
                     
-
                       
                 )
             }
       }
-    class Results extends React.Component{
+    
+      class Results extends React.Component{
         constructor(props) {
         super(props);
         this.state = { repos1:[],repos2:[],
            player1:'',player2:'',Score1:'',Score2:'',f:'',s:'',
-          //             player2: {name: props.player2,grade: 0,},
+       
                     };
   }
-
  
      async componentDidUpdate() {
         
@@ -233,7 +232,6 @@
           repos1: res.data,
           player1:this.props.player1,
           Score1: res.data.public_repos,
-
         });}
         if(this.state.player2!=this.props.player2){
         const res = await axios.get(`https://api.github.com/users/${this.props.player2}`);
@@ -251,7 +249,6 @@
       this.props.display('block');
       this.props.displays(e)
      }
-
  
   render() { 
     const { afontcolor } = this.props.afontcolor;
@@ -422,9 +419,7 @@
    
     
   }
-
     }
-
       class App extends React.Component {
         render() {
           return (
@@ -440,7 +435,6 @@
         document.getElementById('containterbattle'),
         
       );
-
-</script><script type="text/javascript" src="bundle.js"></script></body>
+</script></body>
 
 </html>
