@@ -9,10 +9,10 @@ module.exports = function(env , argv){
   entry: './src/index.js',
   output: {
     filename: 'bundle.js',
-    path: path.resolve(__dirname, 'dome')
+    path: path.resolve(__dirname, 'github')
   },
   devServer: {
-    contentBase: './dome',
+    contentBase: './github',
      historyApiFallback: true,
     contentBase: './',
     hot: true,
