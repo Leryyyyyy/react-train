@@ -14,7 +14,7 @@ module.exports = function(env , argv){
   devServer: {
     contentBase: './github',
      historyApiFallback: true,
-    contentBase: './',
+    
     hot: true,
   },
   plugins: [

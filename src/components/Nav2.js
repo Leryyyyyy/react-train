@@ -1,6 +1,6 @@
 import React from 'react';
 import Content from './Content';
-
+import './Nav2.css'
 
 class Nav2 extends React.Component {
   constructor(props) {
@@ -23,7 +23,7 @@ class Nav2 extends React.Component {
         <div style={{
           width: '100%', backgroundColor: '#e8e8e8', margin: '0 auto', justifyContent: 'center',
         }}
-        >
+        id="daohan">
           <ul style={{
             display: 'flex', listStyle: 'none', fontWeight: 'bold', justifyContent: 'space-between',justifyContent:'center'
           }}
