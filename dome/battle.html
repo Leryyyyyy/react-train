@@ -23,9 +23,7 @@
             background:#f2f2f2!important;
             color:#c7c7c7!important;;
         }
-        .alignitems{
-          align-items: center;
-        }
+        
     </style>
 </head>
 
@@ -95,7 +93,7 @@
             </div>
             <Instructions e={this.state.e}/>
             <Players display={this.canShu} displays={this.canShus} e={this.state.e} player1={this.player1} player2={this.player2} players1={this.state.player1} players2={this.state.player2}/>
-            <Results player1={this.state.player1} player2={this.state.player2} afontcolor={this.state.fontcolor} display={this.canShu} displays={this.canShus} es={this.state.es}/>
+            <Results player1={this.state.player1} player2={this.state.player2} />
           </div>
         );
       }
@@ -206,7 +204,7 @@
                                      
                             </div>
                            <button onClick={this.display.bind(this, 'none')} style={{display:this.state.display5,flex:1,fontSize:'16px',border:'none',cursor:'pointer',letterSpacing:'.25em',background:'black',color:'#c7c7c7',margin:'40px auto',padding:'10px',textTransform:'uppercase',letterSpacing:'0.25em',borderRadius:'3px',border:'none',fontSize:'16px',justifyContent:'center',alignitems:'center',cursor:'pointer',textDecoration:'none',maxWidth:'250px'}} >Battle</button>
-                           
+                          
                     </div>
                     
                       
@@ -420,7 +418,8 @@
     
   }
     }
-      class App extends React.Component {
+      
+    class App extends React.Component {
         render() {
           return (
             <div>

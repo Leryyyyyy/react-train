@@ -1,8 +1,9 @@
 
 import React from 'react';
-import Nav2 from './Nav2';
-import Content from './Content';
+
 import 'font-awesome/css/font-awesome.min.css';
+import '../index.css';
+import { HashRouter as Router, Route ,Link} from "react-router-dom";
 
 class Nav extends React.Component {
   constructor(props) {
@@ -14,6 +15,7 @@ class Nav extends React.Component {
 
       genBian = (xxx) => {
         this.setState({ onClick: xxx });
+        console.log(this.props);
       }
 
       canShu = (ee) => {
@@ -49,26 +51,27 @@ class Nav extends React.Component {
                   flex: '1', color: 'red', marginRight: '10px', cursor: 'pointer',
                 }}
                 >
-                  <a
+                  <Link to="/dome"
                     onClick={this.genBian.bind(this, 'Popoular')}
-                    className={this.state.onClick === 'Popoular' ? 'active' : ' '}
+                    className={this.state.onClick === 'Popoular' ? 'active' : 'active2'}
                     style={{
                       fontWeight: 'bold', flex: 1, fontSize: '18px', border: 'none', cursor: 'pointer', textDecoration: 'none',
                     }}
-                    href="index.html"
+                    
                   >Popoular
-                  </a>
+                  </Link>
                 </li>
+
                 <li style={{ flex: '1', cursor: 'pointer' }}>
-                  <a
+                  <Link to="/dome/battle"
                     onClick={this.genBian.bind(this, 'Battle')}
-                    className={this.state.onClick === 'Battle' ? 'active' : ' '}
+                    className={this.state.onClick === 'Battle' ? 'active' : ' active2'}
                     style={{
-                      fontWeight: 'bold', flex: 1, fontSize: '18px', border: 'none', cursor: 'pointer', textDecoration: 'none', color: this.state.fontcolor,
+                      fontWeight: 'bold', flex: 1, fontSize: '18px', border: 'none', cursor: 'pointer', textDecoration: 'none', 
                     }}
-                    href="battle.html"
+                   
                   >Battle
-                  </a>
+                  </Link>
                 </li>
               </ul>
               <span className={this.state.icon} onClick={this.changeIcon} />

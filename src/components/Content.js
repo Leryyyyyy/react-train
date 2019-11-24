@@ -1,12 +1,12 @@
 import React from 'react';
 import axios from 'axios';
-import InfiniteScroll from 'react-infinite-scroller';
-
+//滚动加载import InfiniteScroll from 'react-infinite-scroller';
+import 'font-awesome/css/font-awesome.min.css';
 class Content extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      repos: [], b: '', roading: 'flex', content: 'none',
+      repos: [], b: '', roading: 'block', content: 'none',
     };
   }
 
@@ -16,7 +16,7 @@ class Content extends React.Component {
     this.setState({
       repos: res.data.items,
       roading: 'none',
-      content: 'flex',
+      content: 'block',
     });
   }
 
@@ -25,7 +25,7 @@ class Content extends React.Component {
     const bb = this.state.b;
     if (bb !== a) {
       this.setState({
-        roading: 'flex',
+        roading: 'block',
         content: 'none',
         b: this.props.e,
       });
@@ -35,7 +35,7 @@ class Content extends React.Component {
         repos: res.data.items,
 
         roading: 'none',
-        content: 'flex',
+        content: 'block',
       });
     }
   }
@@ -129,10 +129,10 @@ class Content extends React.Component {
 
             </div>
         <div style={{
-          display: this.state.roading, fontSize: '35px', marginTop: ' 20px', textAlign: 'center', width: '100%',
+          display: this.state.roading, fontSize: '200px', marginTop: ' 20px', textAlign: 'center', width: '100%',height:'650px',margin:'auto'
         }}
         >
-          loading...
+         <i className="fa fa-spinner fa-spin"></i>
         </div>
       </div>
     );

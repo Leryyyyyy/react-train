@@ -9,20 +9,20 @@ module.exports = function(env , argv){
   entry: './src/index.js',
   output: {
     filename: 'bundle.js',
-    path: path.resolve(__dirname, 'dist')
+    path: path.resolve(__dirname, 'dome')
   },
   devServer: {
-    contentBase: './dist',
+    contentBase: './dome',
+     historyApiFallback: true,
+    contentBase: './',
+    hot: true,
   },
   plugins: [
     new HtmlWebpackPlugin({
       filename:'index.html',
       template: "./public/index.html"
     }),
-    // new HtmlWebpackPlugin({
-    //   filename:'battle.html',
-    //   template: "./public/battle.html"
-    // })
+   
   ],
   module: {
     rules: [
