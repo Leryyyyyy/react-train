@@ -51,7 +51,7 @@ class Nav extends React.Component {
                   flex: '1', color: 'red', marginRight: '10px', cursor: 'pointer',
                 }}
                 >
-                  <Link to="/dome"
+                  <Link to="/"
                     onClick={this.genBian.bind(this, 'Popoular')}
                     className={this.state.onClick === 'Popoular' ? 'active' : 'active2'}
                     style={{
@@ -63,7 +63,7 @@ class Nav extends React.Component {
                 </li>
 
                 <li style={{ flex: '1', cursor: 'pointer' }}>
-                  <Link to="/dome/battle"
+                  <Link to="/battle"
                     onClick={this.genBian.bind(this, 'Battle')}
                     className={this.state.onClick === 'Battle' ? 'active' : ' active2'}
                     style={{

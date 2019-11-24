@@ -49121,7 +49121,7 @@ function (_React$Component) {
           margin: 'auto'
         }
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        "class": "fa fa-spinner fa-spin"
+        className: "fa fa-spinner fa-spin"
       })));
     }
   }, {
@@ -49227,6 +49227,8 @@ function (_React$Component) {
       _this.setState({
         onClick: xxx
       });
+
+      console.log(_this.props);
     });
 
     _defineProperty(_assertThisInitialized(_this), "canShu", function (ee) {
@@ -49292,7 +49294,7 @@ function (_React$Component) {
           cursor: 'pointer'
         }
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Link"], {
-        to: "/dome",
+        to: "/",
         onClick: this.genBian.bind(this, 'Popoular'),
         className: this.state.onClick === 'Popoular' ? 'active' : 'active2',
         style: {
@@ -49309,7 +49311,7 @@ function (_React$Component) {
           cursor: 'pointer'
         }
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Link"], {
-        to: "/dome/battle",
+        to: "/battle",
         onClick: this.genBian.bind(this, 'Battle'),
         className: this.state.onClick === 'Battle' ? 'active' : ' active2',
         style: {
@@ -49598,7 +49600,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _index_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../index.css */ "./src/index.css");
 /* harmony import */ var _index_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_index_css__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-/* harmony import */ var _Results__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Results */ "./src/components/Results.js");
 (function () {
   var enterModule = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.enterModule : undefined;
   enterModule && enterModule(module);
@@ -49627,7 +49628,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 var __signature__ = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal["default"].signature : function (a) {
   return a;
 };
-
 
 
 
@@ -49730,7 +49730,7 @@ function (_React$Component) {
       var Inputs1 = this.state.Inputs1;
       var Inputs2 = this.state.Inputs2;
       var path = {
-        pathname: "/dome/battle/results?playerOne=" + Inputs1 + "&playerTwo=" + Inputs2,
+        pathname: "/battle/results?playerOne=" + Inputs1 + "&playerTwo=" + Inputs2,
         state: [Inputs1, Inputs2]
       };
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -50231,7 +50231,7 @@ function (_React$Component) {
             case 5:
               res2 = _context.sent;
               console.log('res1', res1.data);
-              console.log('res2', res2.data);
+              console.log('res2', res2.data, this.props);
               this.setState(_defineProperty({
                 repos1: res1.data,
                 player1: this.props.location.state[0],
@@ -50673,7 +50673,7 @@ function (_React$Component) {
         },
         href: ""
       }, this.state.repos2.public_repos, "repositories")))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
-        to: "/dome/battle",
+        to: "/battle",
         style: (_ref = {
           display: 'flex',
           flex: 1,
@@ -50759,17 +50759,17 @@ var __signature__ = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoader
 
 
 var BasicExample = function BasicExample() {
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["BrowserRouter"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Nav__WEBPACK_IMPORTED_MODULE_2__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["HashRouter"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Nav__WEBPACK_IMPORTED_MODULE_2__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
     exact: true,
-    path: "/dome",
+    path: "/",
     component: _Nav2__WEBPACK_IMPORTED_MODULE_3__["default"]
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
     exact: true,
-    path: "/dome/battle/",
+    path: "/battle/",
     component: _Players__WEBPACK_IMPORTED_MODULE_4__["default"]
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
     exact: true,
-    path: "/dome/battle/:name",
+    path: "/battle/:name",
     component: _Results__WEBPACK_IMPORTED_MODULE_5__["default"]
   })));
 };

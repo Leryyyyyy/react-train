@@ -1,7 +1,7 @@
 import React from 'react';
 import '../index.css';
-import { HashRouter as Router, Route ,Link} from "react-router-dom";
-import Results from "./Results";
+import { HashRouter  as Router, Route ,Link} from "react-router-dom";
+
 class Players extends React.Component{
     constructor(props) {
         
@@ -48,7 +48,7 @@ class Players extends React.Component{
            const Inputs2 =this.state.Inputs2;
          
            const path ={
-            pathname:"/dome/battle/results?playerOne="+Inputs1+"&playerTwo="+Inputs2,
+            pathname:"/battle/results?playerOne="+Inputs1+"&playerTwo="+Inputs2,
             state:[Inputs1,Inputs2],
             
            }

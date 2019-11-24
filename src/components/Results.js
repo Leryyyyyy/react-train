@@ -196,7 +196,7 @@ return (
       </ul>
       
     </div>
-    <Link to="/dome/battle"  style={{display:'flex',flex:1,fontSize:'16px',border:'none',cursor:'pointer',letterSpacing:'.25em',background:'black',color:'#c7c7c7',margin:'40px auto',padding:'10px',textTransform:'uppercase',letterSpacing:'0.25em',borderRadius:'3px',border:'none',fontSize:'16px',justifyContent:'center',alignitems:'center',cursor:'pointer',textDecoration:'none',maxWidth:'250px'}} >Battle</Link>
+    <Link to="/battle"  style={{display:'flex',flex:1,fontSize:'16px',border:'none',cursor:'pointer',letterSpacing:'.25em',background:'black',color:'#c7c7c7',margin:'40px auto',padding:'10px',textTransform:'uppercase',letterSpacing:'0.25em',borderRadius:'3px',border:'none',fontSize:'16px',justifyContent:'center',alignitems:'center',cursor:'pointer',textDecoration:'none',maxWidth:'250px'}} >Battle</Link>
      
  </div>
 )
