@@ -11367,6 +11367,20 @@ exports.push([module.i, "/*!\n *  Font Awesome 4.7.0 by @davegandy - http://font
 
 /***/ }),
 
+/***/ "./node_modules/css-loader/dist/cjs.js!./src/components/Nav2.css":
+/*!***********************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js!./src/components/Nav2.css ***!
+  \***********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js")(false);
+// Module
+exports.push([module.i, "#daohan ul li p:hover{\r\n    background-color: #555;\r\n    color: white;\r\n}", ""]);
+
+
+/***/ }),
+
 /***/ "./node_modules/css-loader/dist/cjs.js!./src/index.css":
 /*!*************************************************************!*\
   !*** ./node_modules/css-loader/dist/cjs.js!./src/index.css ***!
@@ -49364,6 +49378,33 @@ var _default = Nav;
 
 /***/ }),
 
+/***/ "./src/components/Nav2.css":
+/*!*********************************!*\
+  !*** ./src/components/Nav2.css ***!
+  \*********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var content = __webpack_require__(/*! !../../node_modules/css-loader/dist/cjs.js!./Nav2.css */ "./node_modules/css-loader/dist/cjs.js!./src/components/Nav2.css");
+
+if (typeof content === 'string') {
+  content = [[module.i, content, '']];
+}
+
+var options = {}
+
+options.insert = "head";
+options.singleton = false;
+
+var update = __webpack_require__(/*! ../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js")(content, options);
+
+if (content.locals) {
+  module.exports = content.locals;
+}
+
+
+/***/ }),
+
 /***/ "./src/components/Nav2.js":
 /*!********************************!*\
   !*** ./src/components/Nav2.js ***!
@@ -49376,6 +49417,8 @@ __webpack_require__.r(__webpack_exports__);
 /* WEBPACK VAR INJECTION */(function(module) {/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _Content__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Content */ "./src/components/Content.js");
+/* harmony import */ var _Nav2_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Nav2.css */ "./src/components/Nav2.css");
+/* harmony import */ var _Nav2_css__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_Nav2_css__WEBPACK_IMPORTED_MODULE_2__);
 (function () {
   var enterModule = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.enterModule : undefined;
   enterModule && enterModule(module);
@@ -49404,6 +49447,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 var __signature__ = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal["default"].signature : function (a) {
   return a;
 };
+
 
 
 
@@ -49441,7 +49485,8 @@ function (_React$Component) {
           backgroundColor: '#e8e8e8',
           margin: '0 auto',
           justifyContent: 'center'
-        }
+        },
+        id: "daohan"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
         style: _defineProperty({
           display: 'flex',
