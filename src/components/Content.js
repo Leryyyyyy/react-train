@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-//滚动加载import InfiniteScroll from 'react-infinite-scroller';
+import InfiniteScroll from 'react-infinite-scroller';//滚动加载
 import 'font-awesome/css/font-awesome.min.css';
 class Content extends React.Component {
   constructor(props) {
@@ -121,11 +121,14 @@ class Content extends React.Component {
         </ul>
 
         {/* <div>
-         <InfiniteScroll    initialLoad={false}  loadMore={() => this. search(false)} hasMore={! Loading || end}  loader={null}>
-              <div style={styLes. content}>{cards}</div>
-                   {loading & <Loading />}
-              </ InfiniteScroll>
-                 </div> */}
+         <InfiniteScroll    
+         initialLoad={false}  
+         loadMore={() => this. search(false)} 
+         hasMore={! Loading || end}  loader={null}>
+            <div style={styLes. content}>{cards}</div>
+              {loading & <Loading />}
+        </ InfiniteScroll>
+         </div> */}
 
             </div>
         <div style={{
