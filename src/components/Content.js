@@ -24,10 +24,10 @@ class Content extends React.Component {
 
   async componentDidUpdate() {
     const a = this.props.e;
-    const bb = this.state.b;
-    const { page } = this.state;
-    const { repos } = this.state;
-    if (bb !== a) {
+    
+    const { page ,repos,b,pages} = this.state;
+    
+    if (b !== a) {
       this.setState({ b: this.props.e, roading: 'block', content: 'none' });
       const res = await axios.get(`https://api.github.com/search/repositories?q=stars:%3E1${a}&sort=stars&order=desc&type=Repositories&page=1`);
       console.log('res', res.data);
@@ -35,24 +35,21 @@ class Content extends React.Component {
         repos: res.data.items, page: 1, pages: 1, roading: 'none', content: 'block',
       });
     }
-    if (page != this.state.pages) {
+    if (page != pages) {
       this.setState({
-
         page: page + 1,
-        b: this.props.e,
+      
       });
-      const res = await axios.get(`https://api.github.com/search/repositories?q=stars:%3E1${a}&sort=stars&order=desc&type=Repositories&page=${this.state.pages}`);
-      console.log('res', res.data);
+      const res = await axios.get(`https://api.github.com/search/repositories?q=stars:%3E1${a}&sort=stars&order=desc&type=Repositories&page=${pages}`);
+      console.log('res', res.data,page);
       this.setState({
         repos: [...repos, ...res.data.items],
-
         roading: 'none',
-
       });
     }
   }
 
-s
+
 
   search=() => {
     const { pages } = this.state;
@@ -138,7 +135,7 @@ s
         <InfiniteScroll
           initialLoad={false}
           loadMore={() => this.search(false)}
-          hasMore={this.state.roading == 'none'}
+          hasMore={this.state.roading == 'none'||this.state.b != this.props.e}
           loader={null}
         >
           <ul style={{
