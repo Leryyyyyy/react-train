@@ -6,7 +6,7 @@ class Nav2 extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      onClick: '',
+      onClick: '',page:1
     };
   }
 
@@ -83,7 +83,7 @@ class Nav2 extends React.Component {
             </p>
             </li>
           </ul>
-         <div> <Content e={this.state.onClick}/></div>
+         <div> <Content e={this.state.onClick} page={this.state.page}/></div>
         </div>
       );
     }

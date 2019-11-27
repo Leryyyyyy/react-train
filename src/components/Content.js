@@ -6,7 +6,7 @@ class Content extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      repos: [], b: '', roading: 'block', content: 'none',page:1,pages:1
+      repos: [], b: '', roading: 'block', content: 'block',page:1,pages:1
     };
   }
 
@@ -26,7 +26,13 @@ class Content extends React.Component {
     const bb = this.state.b;
     const page =  this.state.page;
     const repos =this.state.repos
-    if (bb !== a || page!=this.state.pages) {
+    if(bb !== a){
+      this.setState({ b: this.props.e, roading: 'block',content:'none'});
+      const res = await axios.get(`https://api.github.com/search/repositories?q=stars:%3E1${a}&sort=stars&order=desc&type=Repositories&page=1`);
+      console.log('res', res.data);
+      this.setState({   repos: res.data.items, page:1,pages:1,roading:'none',content:'block'});
+    }
+    if ( page!=this.state.pages) {
       this.setState({
         
         page:page+1,
@@ -120,7 +126,7 @@ class Content extends React.Component {
     ));
     return (
       <div> <div style={{
-        width: '90%', backgroundColor: '', margin: '0 auto', justifyContent: 'center',
+        width: '90%', backgroundColor: '', margin: '0 auto', justifyContent: 'center',display:this.state.content
       }}
       >
         
