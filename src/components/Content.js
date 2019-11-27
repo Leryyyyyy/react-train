@@ -1,60 +1,65 @@
 import React from 'react';
 import axios from 'axios';
-import InfiniteScroll from 'react-infinite-scroller';//滚动加载
+import InfiniteScroll from 'react-infinite-scroller';// 滚动加载
 import 'font-awesome/css/font-awesome.min.css';
+
 class Content extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      repos: [], b: '', roading: 'block', content: 'block',page:1,pages:1
+      repos: [], b: '', roading: 'block', content: 'block', page: 1, pages: 1,
     };
   }
 
   async componentDidMount() {
-    const res = await axios.get('https://api.github.com/search/repositories?q=stars:%3E1' + '&sort=stars&order=desc&type=Repositories');
+    const res = await axios.get('https://api.github.com/search/repositories?q=stars:%3E1&sort=stars&order=desc&type=Repositories');
     console.log('res', res.data);
     this.setState({
       repos: res.data.items,
       roading: 'none',
-     
-     
+
+
     });
   }
 
   async componentDidUpdate() {
     const a = this.props.e;
     const bb = this.state.b;
-    const page =  this.state.page;
-    const repos =this.state.repos
-    if(bb !== a){
-      this.setState({ b: this.props.e, roading: 'block',content:'none'});
+    const { page } = this.state;
+    const { repos } = this.state;
+    if (bb !== a) {
+      this.setState({ b: this.props.e, roading: 'block', content: 'none' });
       const res = await axios.get(`https://api.github.com/search/repositories?q=stars:%3E1${a}&sort=stars&order=desc&type=Repositories&page=1`);
       console.log('res', res.data);
-      this.setState({   repos: res.data.items, page:1,pages:1,roading:'none',content:'block'});
-    }
-    if ( page!=this.state.pages) {
       this.setState({
-        
-        page:page+1,
+        repos: res.data.items, page: 1, pages: 1, roading: 'none', content: 'block',
+      });
+    }
+    if (page != this.state.pages) {
+      this.setState({
+
+        page: page + 1,
         b: this.props.e,
       });
       const res = await axios.get(`https://api.github.com/search/repositories?q=stars:%3E1${a}&sort=stars&order=desc&type=Repositories&page=${this.state.pages}`);
       console.log('res', res.data);
       this.setState({
         repos: [...repos, ...res.data.items],
-       
+
         roading: 'none',
-       
+
       });
     }
-  }s
-  search=()=>{
-    const pages=this.state.pages
-    this.setState({pages:pages+1,roading: 'block',})
-    console.log(this.state.pages)
-    
   }
-  
+
+s
+
+  search=() => {
+    const { pages } = this.state;
+    this.setState({ pages: pages + 1, roading: 'block' });
+    console.log(this.state.pages);
+  }
+
   // avatar_url
   // html_url
   // owner.html_url
@@ -63,7 +68,6 @@ class Content extends React.Component {
   // open_issues
 
   render() {
-   
     const list = this.state.repos.map((items, key) => (
       <div
         style={{
@@ -126,34 +130,34 @@ class Content extends React.Component {
     ));
     return (
       <div> <div style={{
-        width: '90%', backgroundColor: '', margin: '0 auto', justifyContent: 'center',display:this.state.content
+        width: '90%', backgroundColor: '', margin: '0 auto', justifyContent: 'center', display: this.state.content,
       }}
       >
-        
-           
-         <InfiniteScroll  
-           initialLoad={false}  
-           loadMore={() => this. search(false)} 
-           hasMore={this.state.roading=='none'}   
-           loader={null}>
-              <ul style={{
-                   display: 'flex', flexWrap: 'wrap', listStyle: 'none', justifyContent: 'space-around',
-                 }}
-              >{list} </ul>
-             
-        </ InfiniteScroll>
-         
-       
 
-         
+
+        <InfiniteScroll
+          initialLoad={false}
+          loadMore={() => this.search(false)}
+          hasMore={this.state.roading == 'none'}
+          loader={null}
+        >
+          <ul style={{
+            display: 'flex', flexWrap: 'wrap', listStyle: 'none', justifyContent: 'space-around',
+          }}
+          >{list}
+          </ul>
+
+        </InfiniteScroll>
+
+
             </div>
-       
-         <div style={{
-          display: this.state.roading, fontSize: '200px', marginTop: ' 20px', textAlign: 'center', width: '100%',height:'650px',margin:'auto'
+
+        <div style={{
+          display: this.state.roading, fontSize: '200px', marginTop: ' 20px', textAlign: 'center', width: '100%', height: '650px', margin: 'auto',
         }}
         >
-         <i className="fa fa-spinner fa-spin"></i>
-        </div> 
+          <i className="fa fa-spinner fa-spin" />
+        </div>
       </div>
     );
   }

@@ -3,7 +3,7 @@ import React from 'react';
 
 import 'font-awesome/css/font-awesome.min.css';
 import '../index.css';
-import { HashRouter as Router, Route ,Link} from "react-router-dom";
+import { HashRouter as Router, Route, Link } from 'react-router-dom';
 
 class Nav extends React.Component {
   constructor(props) {
@@ -51,25 +51,27 @@ class Nav extends React.Component {
                   flex: '1', color: 'red', marginRight: '10px', cursor: 'pointer',
                 }}
                 >
-                  <Link to="/"
+                  <Link
+                    to="/"
                     onClick={this.genBian.bind(this, 'Popoular')}
                     className={this.state.onClick === 'Popoular' ? 'active' : 'active2'}
                     style={{
                       fontWeight: 'bold', flex: 1, fontSize: '18px', border: 'none', cursor: 'pointer', textDecoration: 'none',
                     }}
-                    
+
                   >Popoular
                   </Link>
                 </li>
 
                 <li style={{ flex: '1', cursor: 'pointer' }}>
-                  <Link to="/battle"
+                  <Link
+                    to="/battle"
                     onClick={this.genBian.bind(this, 'Battle')}
                     className={this.state.onClick === 'Battle' ? 'active' : ' active2'}
                     style={{
-                      fontWeight: 'bold', flex: 1, fontSize: '18px', border: 'none', cursor: 'pointer', textDecoration: 'none', 
+                      fontWeight: 'bold', flex: 1, fontSize: '18px', border: 'none', cursor: 'pointer', textDecoration: 'none',
                     }}
-                   
+
                   >Battle
                   </Link>
                 </li>
@@ -77,7 +79,7 @@ class Nav extends React.Component {
               <span className={this.state.icon} onClick={this.changeIcon} />
 
             </div>
-            
+
           </div>
         );
       }

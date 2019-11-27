@@ -1,31 +1,31 @@
 import React from 'react';
 import Content from './Content';
-import './Nav2.css'
+import './Nav2.css';
 
 class Nav2 extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      onClick: '',page:1
+      onClick: '', page: 1,
     };
   }
 
 
     canShu2=(ee) => {
-     
       this.setState({ onClick: ee });
     }
 
 
     render() {
-      
       return (
-        <div style={{
-          width: '100%', backgroundColor: '#e8e8e8', margin: '0 auto', justifyContent: 'center',
-        }}
-        id="daohan">
+        <div
+          style={{
+            width: '100%', backgroundColor: '#e8e8e8', margin: '0 auto', justifyContent: 'center',
+          }}
+          id="daohan"
+        >
           <ul style={{
-            display: 'flex', listStyle: 'none', fontWeight: 'bold', justifyContent: 'space-between',justifyContent:'center'
+            display: 'flex', listStyle: 'none', fontWeight: 'bold', justifyContent: 'space-between', justifyContent: 'center',
           }}
           >
             <li style={{ marginRight: '10px', cursor: 'pointer' }}><p
@@ -83,7 +83,7 @@ class Nav2 extends React.Component {
             </p>
             </li>
           </ul>
-         <div> <Content e={this.state.onClick} page={this.state.page}/></div>
+          <div> <Content e={this.state.onClick} page={this.state.page} /></div>
         </div>
       );
     }
