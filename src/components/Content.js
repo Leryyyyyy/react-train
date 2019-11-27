@@ -6,7 +6,7 @@ class Content extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      repos: [], b: '', roading: 'block', content: 'none',
+      repos: [], b: '', roading: 'block', content: 'none',page:1,pages:1
     };
   }
 
@@ -16,29 +16,39 @@ class Content extends React.Component {
     this.setState({
       repos: res.data.items,
       roading: 'none',
-      content: 'block',
+     
+     
     });
   }
 
   async componentDidUpdate() {
     const a = this.props.e;
     const bb = this.state.b;
-    if (bb !== a) {
+    const page =  this.state.page;
+    const repos =this.state.repos
+    if (bb !== a || page!=this.state.pages) {
       this.setState({
-        roading: 'block',
-        content: 'none',
+        
+        page:page+1,
         b: this.props.e,
       });
-      const res = await axios.get(`https://api.github.com/search/repositories?q=stars:%3E1${a}&sort=stars&order=desc&type=Repositories`);
+      const res = await axios.get(`https://api.github.com/search/repositories?q=stars:%3E1${a}&sort=stars&order=desc&type=Repositories&page=${this.state.pages}`);
       console.log('res', res.data);
       this.setState({
-        repos: res.data.items,
-
+        repos: [...repos, ...res.data.items],
+       
         roading: 'none',
-        content: 'block',
+       
       });
     }
+  }s
+  search=()=>{
+    const pages=this.state.pages
+    this.setState({pages:pages+1,roading: 'block',})
+    console.log(this.state.pages)
+    
   }
+  
   // avatar_url
   // html_url
   // owner.html_url
@@ -110,33 +120,34 @@ class Content extends React.Component {
     ));
     return (
       <div> <div style={{
-        width: '90%', backgroundColor: '', margin: '0 auto', display: this.state.content, justifyContent: 'center',
+        width: '90%', backgroundColor: '', margin: '0 auto', justifyContent: 'center',
       }}
       >
-        <ul style={{
-          display: 'flex', flexWrap: 'wrap', listStyle: 'none', justifyContent: 'space-around',
-        }}
-        >
-          {list}
-        </ul>
-
-        {/* <div>
-         <InfiniteScroll    
-         initialLoad={false}  
-         loadMore={() => this. search(false)} 
-         hasMore={! Loading || end}  loader={null}>
-            <div style={styLes. content}>{cards}</div>
-              {loading & <Loading />}
+        
+           
+         <InfiniteScroll  
+           initialLoad={false}  
+           loadMore={() => this. search(false)} 
+           hasMore={this.state.roading=='none'}   
+           loader={null}>
+              <ul style={{
+                   display: 'flex', flexWrap: 'wrap', listStyle: 'none', justifyContent: 'space-around',
+                 }}
+              >{list} </ul>
+             
         </ InfiniteScroll>
-         </div> */}
+         
+       
 
+         
             </div>
-        <div style={{
+       
+         <div style={{
           display: this.state.roading, fontSize: '200px', marginTop: ' 20px', textAlign: 'center', width: '100%',height:'650px',margin:'auto'
         }}
         >
          <i className="fa fa-spinner fa-spin"></i>
-        </div>
+        </div> 
       </div>
     );
   }
