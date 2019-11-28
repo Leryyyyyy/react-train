@@ -49172,7 +49172,7 @@ var __signature__ = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoader
 
 
 
- //滚动加载
+ // 滚动加载
 
 
 
@@ -49187,8 +49187,6 @@ function (_React$Component) {
     _classCallCheck(this, Content);
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(Content).call(this, props));
-
-    _defineProperty(_assertThisInitialized(_this), "s", void 0);
 
     _defineProperty(_assertThisInitialized(_this), "search", function () {
       var pages = _this.state.pages;
@@ -49205,7 +49203,7 @@ function (_React$Component) {
       repos: [],
       b: '',
       roading: 'block',
-      content: 'none',
+      content: 'block',
       page: 1,
       pages: 1
     };
@@ -49221,7 +49219,7 @@ function (_React$Component) {
           switch (_context.prev = _context.next) {
             case 0:
               _context.next = 2;
-              return regeneratorRuntime.awrap(axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('https://api.github.com/search/repositories?q=stars:%3E1' + '&sort=stars&order=desc&type=Repositories'));
+              return regeneratorRuntime.awrap(axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('https://api.github.com/search/repositories?q=stars:%3E1&sort=stars&order=desc&type=Repositories'));
 
             case 2:
               res = _context.sent;
@@ -49241,37 +49239,60 @@ function (_React$Component) {
   }, {
     key: "componentDidUpdate",
     value: function componentDidUpdate() {
-      var a, bb, page, repos, res;
+      var a, _this$state, page, repos, b, pages, res, _res;
+
       return regeneratorRuntime.async(function componentDidUpdate$(_context2) {
         while (1) {
           switch (_context2.prev = _context2.next) {
             case 0:
               a = this.props.e;
-              bb = this.state.b;
-              page = this.state.page;
-              repos = this.state.repos;
+              _this$state = this.state, page = _this$state.page, repos = _this$state.repos, b = _this$state.b, pages = _this$state.pages;
 
-              if (!(bb !== a || page != this.state.pages)) {
-                _context2.next = 11;
+              if (!(b !== a)) {
+                _context2.next = 9;
                 break;
               }
 
               this.setState({
-                page: page + 1,
-                b: this.props.e
+                b: this.props.e,
+                roading: 'block',
+                content: 'none'
               });
-              _context2.next = 8;
-              return regeneratorRuntime.awrap(axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("https://api.github.com/search/repositories?q=stars:%3E1".concat(a, "&sort=stars&order=desc&type=Repositories&page=").concat(this.state.pages)));
+              _context2.next = 6;
+              return regeneratorRuntime.awrap(axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("https://api.github.com/search/repositories?q=stars:%3E1".concat(a, "&sort=stars&order=desc&type=Repositories&page=1")));
 
-            case 8:
+            case 6:
               res = _context2.sent;
               console.log('res', res.data);
               this.setState({
-                repos: [].concat(_toConsumableArray(repos), _toConsumableArray(res.data.items)),
+                repos: res.data.items,
+                page: 1,
+                pages: 1,
+                roading: 'none',
+                content: 'block'
+              });
+
+            case 9:
+              if (!(page != pages)) {
+                _context2.next = 16;
+                break;
+              }
+
+              this.setState({
+                page: page + 1
+              });
+              _context2.next = 13;
+              return regeneratorRuntime.awrap(axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("https://api.github.com/search/repositories?q=stars:%3E1".concat(a, "&sort=stars&order=desc&type=Repositories&page=").concat(pages)));
+
+            case 13:
+              _res = _context2.sent;
+              console.log('res', _res.data, page);
+              this.setState({
+                repos: [].concat(_toConsumableArray(repos), _toConsumableArray(_res.data.items)),
                 roading: 'none'
               });
 
-            case 11:
+            case 16:
             case "end":
               return _context2.stop();
           }
@@ -49462,14 +49483,15 @@ function (_React$Component) {
           width: '90%',
           backgroundColor: '',
           margin: '0 auto',
-          justifyContent: 'center'
+          justifyContent: 'center',
+          display: this.state.content
         }
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_infinite_scroller__WEBPACK_IMPORTED_MODULE_2___default.a, {
         initialLoad: false,
         loadMore: function loadMore() {
           return _this2.search(false);
         },
-        hasMore: this.state.roading == 'none',
+        hasMore: this.state.roading == 'none' || this.state.b != this.props.e,
         loader: null
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
         style: {
@@ -49478,7 +49500,7 @@ function (_React$Component) {
           listStyle: 'none',
           justifyContent: 'space-around'
         }
-      }, list, " "))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, list))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         style: {
           display: this.state.roading,
           fontSize: '200px',
@@ -49825,7 +49847,8 @@ function (_React$Component) {
     });
 
     _this.state = {
-      onClick: ''
+      onClick: '',
+      page: 1
     };
     return _this;
   }
@@ -49945,7 +49968,8 @@ function (_React$Component) {
           backgroundColor: '#e8e8e8'
         }
       }, "Python"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Content__WEBPACK_IMPORTED_MODULE_1__["default"], {
-        e: this.state.onClick
+        e: this.state.onClick,
+        page: this.state.page
       })));
     }
   }, {
@@ -50059,8 +50083,6 @@ function (_React$Component) {
           input1: true
         });
       }
-
-      ;
     });
 
     _defineProperty(_assertThisInitialized(_this), "player2", function (e) {
@@ -50090,8 +50112,6 @@ function (_React$Component) {
           input2: true
         });
       }
-
-      ;
     });
 
     _defineProperty(_assertThisInitialized(_this), "player4", function (e) {
@@ -50129,7 +50149,7 @@ function (_React$Component) {
       var Inputs1 = this.state.Inputs1;
       var Inputs2 = this.state.Inputs2;
       var path = {
-        pathname: "/battle/results?playerOne=" + Inputs1 + "&playerTwo=" + Inputs2,
+        pathname: "/battle/results?playerOne=".concat(Inputs1, "&playerTwo=").concat(Inputs2),
         state: [Inputs1, Inputs2]
       };
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -50311,7 +50331,7 @@ function (_React$Component) {
           padding: '10px'
         }
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: "https://github.com/" + Inputs1 + ".png?size=200",
+        src: "https://github.com/".concat(Inputs1, ".png?size=200"),
         alt: "",
         style: {
           width: '55px',
@@ -50320,7 +50340,7 @@ function (_React$Component) {
           fontSize: '20px'
         }
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        href: "https://github.com/" + Inputs1,
+        href: "https://github.com/".concat(Inputs1),
         style: {
           margin: 'auto',
           marginLeft: '10px',
@@ -50412,7 +50432,7 @@ function (_React$Component) {
           padding: '10px'
         }
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: "https://github.com/" + Inputs2 + ".png?size=200",
+        src: "https://github.com/".concat(Inputs2, ".png?size=200"),
         alt: "",
         style: {
           width: '55px',
@@ -50421,7 +50441,7 @@ function (_React$Component) {
           fontSize: '20px'
         }
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        href: "https://github.com/" + Inputs2,
+        href: "https://github.com/".concat(Inputs2),
         style: {
           margin: 'auto',
           marginLeft: '10px',
@@ -50723,7 +50743,7 @@ function (_React$Component) {
           margin: '30px 0'
         }
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        href: "https://github.com/" + this.state.player1,
+        href: "https://github.com/".concat(this.state.player1),
         style: {
           color: 'rgb(187, 46, 31)',
           fontWeight: 'bold',
@@ -50913,7 +50933,7 @@ function (_React$Component) {
           margin: '30px 0'
         }
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        href: "https://github.com/" + this.state.player2,
+        href: "https://github.com/".concat(this.state.player2),
         style: {
           color: 'rgb(187, 46, 31)',
           fontWeight: 'bold',
@@ -51249,11 +51269,11 @@ var __signature__ = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoader
 
 
 
- //import App from './components/App';
+ // import App from './components/App';
 
 
 
-react_dom__WEBPACK_IMPORTED_MODULE_2___default.a.render( //<App />,
+react_dom__WEBPACK_IMPORTED_MODULE_2___default.a.render( // <App />,
 react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_components_Router__WEBPACK_IMPORTED_MODULE_4__["default"], null), document.getElementById('containter'));
 
 /***/ })
